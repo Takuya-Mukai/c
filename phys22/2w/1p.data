@@ -1,0 +1,9 @@
+f(x) = x**3
+dfdx1(x0,dx)=( f(x0+dx)-f(x0))/dx
+df(x)/dx ≒ (f(x + dx) - f(x)) / dx
+(f(x + dx) - f(x-dx))/ dx = f' + f''(x)dx/2 + O(dx^2)
+set format x "%.1f"
+x0 = 1
+#plot[1.e-7:1] dfdx1(x0.x)
+df dx(x) = 3*x**2
+plot[1.e-7:1] abs(dfdx1(x0,x)-dfdx(x0))
