@@ -18,7 +18,7 @@ double calculate_y(double theta, double e) {
   return sqrt(1 - e * e) * sin(theta);
 }
 
-double define_h(void);
+// double define_h(void);
 double newton(double theta, double e, double t);
 
 
@@ -30,7 +30,7 @@ int main(void) {
   // calculate the time when theta0 = 2*pi
   for (int i = 0; theta0 < 2 * M_PI; i++) {
     t = i * dt;
-    double theta0 = newton(theta0, e, t);
+    theta0 = newton(theta0, e, t);
   }
   double T = t;
 
@@ -48,35 +48,35 @@ int main(void) {
   return 0;
 }
 
-double define_h(void) {
-  double theta = 1. / 2, e = 1. / 2, t = 10, h;
-  double h0 = 1;
-  double diff0 = 1.0;
-  for (int i = 0; i <= 16; i++) {
-    // define order of h
-    h = pow(10, -i);
-
-    for (int j = 9; j >= 1; j--) {
-      h += j * pow(10, -i - 1);
-      double df1 = df(theta, e);
-      double Df1 = Df(theta, e, t, h);
-
-      // compare the difference between df and Df
-      double diff = fabs(df1 - Df1);
-
-      // compare the difference between now and before
-      if (diff <= diff0) {
-        h0 = h;
-        diff0 = diff;
-      }
-    }
-  }
-  printf("%e\n", h0);
-  return h0;
-}
+// double define_h(void) {
+//   double theta = 1. / 2, e = 1. / 2, t = 10, h;
+//   double h0 = 1;
+//   double diff0 = 1.0;
+//   for (int i = 0; i <= 16; i++) {
+//     // define order of h
+//     h = pow(10, -i);
+//
+//     for (int j = 9; j >= 1; j--) {
+//       h += j * pow(10, -i - 1);
+//       double df1 = df(theta, e);
+//       double Df1 = Df(theta, e, t, h);
+//
+//       // compare the difference between df and Df
+//       double diff = fabs(df1 - Df1);
+//
+//       // compare the difference between now and before
+//       if (diff <= diff0) {
+//         h0 = h;
+//         diff0 = diff;
+//       }
+//     }
+//   }
+//   printf("%e\n", h0);
+//   return h0;
+// }
 
 double newton(double theta, double e, double t) {
-  double h = define_h();
+  double h = 4.500000e-08;
   double theta0 = theta;
   double theta1 = theta0 - f(theta0, e, t) / Df(theta0, e, t, h);
 
