@@ -11,9 +11,10 @@ double df(double theta, double e) { return 1.0 - e * cos(theta); }
 double Df(double theta, double e, double t, double h) {
   return (f(theta + h, e, t) - f(theta, e, t)) / h;
 }
+double newton(double theta, double e, double t);
 
 double define_h(void) {
-  double theta = 1. / 2, e = 1. / 2, t = 10, h;
+  double theta = 0, e = 1. / 2, t = 0, h;
   double h0 = 1;
   double diff0 = 1.0;
   for (int i = 0; i <= 16; i++) {
@@ -54,8 +55,9 @@ double newton(double theta, double e, double t) {
 
 int main(void) {
   double t = 1./4, theta0 = 1./2;
-  int e = 1./2;
+  double e = 1./2;
   double theta = newton(theta0, e, t);
+  define_h();
   printf("theta = %e\n", theta);
   return 0;
 }
