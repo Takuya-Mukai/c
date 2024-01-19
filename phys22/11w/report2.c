@@ -8,7 +8,7 @@ int main(void) {
   double a = 1, b = 2, c = 3;
   double v;
   double V = 4 * M_PI * a * b * c / 3;
-  int try_count = 10000;
+  int try_count = 1000000;
   double V_DIFF[try_count];
   double V_RECTANGULAR = 8 * a * b * c;
   double V_AVE;
